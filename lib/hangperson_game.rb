@@ -11,7 +11,25 @@ class HangpersonGame
     @guesses = ''
     @wrong_guesses = ''
   end
-
+  
+  def guess(g)
+    raise ArgumentError if g==nil || g == '' || (g =~ /^[[:alpha:]]$/) == nil
+    if @word.include? g.downcase
+      if @guesses.include? g.downcase
+        return false
+      else
+        @guesses << g 
+        return true
+      end
+    else
+      if @wrong_guesses.include? g.downcase
+        return false 
+      else
+        @wrong_guesses << g
+        return true
+      end
+    end
+  end  
   def self.get_random_word
     require 'uri'
     require 'net/http'
