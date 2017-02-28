@@ -4,12 +4,12 @@ class HangpersonGame
   # to make the tests in spec/hangperson_game_spec.rb pass.
 
   # Get a word from remote "random word" service
-
-  # def initialize()
-  # end
+  attr_accessor :word, :guesses, :wrong_guesses
   
   def initialize(word)
     @word = word
+    @guesses = ''
+    @wrong_guesses = ''
   end
 
   def self.get_random_word
